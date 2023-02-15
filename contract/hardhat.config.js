@@ -1,9 +1,8 @@
-require("@nomicfoundation/hardhat-toolbox");
-// require("@nomicfoundation/hardhat-etherscan");
-require('dotenv').config()
+// 1. Import the Ethers plugin required to interact with the contract
+require('@nomiclabs/hardhat-ethers');
 
-const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
-const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
+// 2. Import your private key from your pre-funded Moonbase Alpha testing account
+const { privateKey } = require('./secrets.json');
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -17,14 +16,11 @@ module.exports = {
     },
   },
   networks: {
-    goerli: {
-      url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts: [GOERLI_PRIVATE_KEY]
-    }
-  },
-  etherscan: {
-    apiKey: {
-      goerli: 'DCKA744I5GMMQD9CZCHJKBM7Y632NRSRVG'
+    // 4. Add the Moonbase Alpha network specification
+    moonbase: {
+      url: 'https://rpc.api.moonbase.moonbeam.network',
+      chainId: 1287, // 0x507 in hex,
+      accounts: [privateKey]
     }
   }
 };
