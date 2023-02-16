@@ -3,6 +3,7 @@ const dataMonster =  require('../../../contract/data.json');
 const fs =  require('fs');
 const { ThirdwebSDK } =  require("@thirdweb-dev/sdk");
 const {} =  require('dotenv/config');
+const { getChainRPCs, MoonbaseAlpha } =  require("@thirdweb-dev/chains");
 
 
 start();
@@ -10,14 +11,15 @@ start();
 
 async function start()
 {
+  // console.log(MoonbaseAlpha)
   const GOERLI_PRIVATE_KEY = "a12e71ebe9a4bc009a99f6b0a99c8f24163ce13d39979100adb2a1a74c7519b7";
-  const sdk = ThirdwebSDK.fromPrivateKey(GOERLI_PRIVATE_KEY, "goerli");
+  const sdk = ThirdwebSDK.fromPrivateKey(GOERLI_PRIVATE_KEY, activeChain = MoonbaseAlpha) ;
   // First, instantiate the SDK
   const storage = new ThirdwebStorage();
-  const contract = await sdk.getContract("0x0D21a294d856190c393c52bb1d16C2E4AfDFE7Ad");
+  const contract = await sdk.getContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");
   
   for (let i = 0; i < dataMonster.length; i++) {
-      const filepath="./contract/images/"+dataMonster[i].name+".png";
+      const filepath="../contract/images/"+dataMonster[i].name+".png";
       const metadata = {
           name: dataMonster[i].name,
           description: "A Bokeverse NFT",
