@@ -24,7 +24,7 @@ public class SDKManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SDK = new ThirdwebSDK("goerli");
+        SDK = new ThirdwebSDK("https://rpc.api.moonbase.moonbeam.network");
     }
 
     // Update is called once per frame

@@ -143,7 +143,9 @@ public class BokemonParty : MonoBehaviour {
                 exp[i] = (int) experience * (1 - UnityEngine.Random.Range(0, 10) / 10);
             }
 
-            var contract = SDKManager.Instance.SDK.GetContract("0xfbFaAB92b0444c36770190F22ea0C116B0Dea1a2");
+            // https://thirdweb.com/moonbase-alpha/0xcFfB78dc49c7b096F046d77788014832dcbabF53
+
+            var contract = SDKManager.Instance.SDK.GetContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");
             var result = await contract.Write("increaseExperienceBatch", ids, exp);
 
             // function increaseExperienceBatch(uint256[] memory _ids, uint256[] memory _experience)
@@ -172,7 +174,7 @@ public class BokemonParty : MonoBehaviour {
         transactionMessage.SetActive(true);
         
         try {
-            var contract = SDKManager.Instance.SDK.GetContract("0xfbFaAB92b0444c36770190F22ea0C116B0Dea1a2");
+            var contract = SDKManager.Instance.SDK.GetContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");
             string playerAddress = await SDKManager.Instance.SDK.wallet.GetAddress();
             var result = await contract.Write("mint", playerAddress, "ipfs://QmSgbfYSXEN1mZKwf4uWdUX1XgT7nyXB2KXBb6DxzB2jN2/0", 1);
             
@@ -206,7 +208,7 @@ public class BokemonParty : MonoBehaviour {
 
     // function to fetch the bokemon in the party from the contract
     public async void fetchBokemons() {
-        var contract = SDKManager.Instance.SDK.GetContract("0xfbFaAB92b0444c36770190F22ea0C116B0Dea1a2");
+        var contract = SDKManager.Instance.SDK.GetContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");
         string playerAddress = await SDKManager.Instance.SDK.wallet.GetAddress();
         
         // debug purposes to print the player's wallet address
