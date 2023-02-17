@@ -17,7 +17,7 @@ const storage = new ThirdwebStorage();
 start();
 
 async function start() {
-    const contract = await sdk.getContract("0x5679B3Fe5f66c68875210A99eC8C788f377B41c6");
+    const contract = await sdk.getContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");
     for (let i = 0; i < dataMonster.length; i++) {
         const filepath="./src/scripts/QRcodeMonster/"+dataMonster[i].name+".png";
         const metadata = {

@@ -6,8 +6,8 @@ import { ethers } from 'ethers'
 import { ThirdwebSDK } from "@thirdweb-dev/sdk";
 import AuthProvider from './AuthProvider';
 
-class App extends React.Component {
-  constructor(props) {
+class App extends React.Component<any, any> {
+  constructor(props: any) {
     super(props);
     this.state = {
       decodedResults: [],
@@ -54,21 +54,21 @@ class App extends React.Component {
     );
   }
 
-  onNewScanResult(decodedText, decodedResult) {
+  onNewScanResult(decodedText:any, decodedResult:any) {
     console.log(
       "App [result]", decodedResult['decodedText']);
     this.setState({
       showButton: true,
       result: decodedResult['decodedText']
     });
-    this.setState((state, props) => {
+    this.setState((state:any, props:any) => {
       state.decodedResults.push(decodedResult);
       console.log(state.decodedResults);
       return state;
     });
   }
 
-  async redeemItem(result) {
+  async redeemItem(result:any) {
     // let ethProvider = new ethers.providers.Web3Provider(window.ethereum);
     // let signer = ethProvider.getSigner()
     // const sdk = ThirdwebSDK.fromSigner(signer);

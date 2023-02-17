@@ -41,7 +41,7 @@ export default function Home() {
                 </h2>
 
                 <h3 className='text-2xl'>
-                  With PvP mode on the horizon, the competition is about to heat up. Don't miss out on this opportunity to dive right in and be a part of this exciting new world. Get ready for an unforgettable adventure filled with challenges and rewards.
+                  With PvP mode on the horizon, the competition is about to heat up. Don&apos;t miss out on this opportunity to dive right in and be a part of this exciting new world. Get ready for an unforgettable adventure filled with challenges and rewards.
                 </h3>
 
                 <h1 className='text-[#3A3771] text-4xl font-base'>Start playing today!</h1>
