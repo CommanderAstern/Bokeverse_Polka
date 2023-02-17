@@ -12,8 +12,8 @@ start();
 async function start()
 {
   // console.log(MoonbaseAlpha)
-  const GOERLI_PRIVATE_KEY = "a12e71ebe9a4bc009a99f6b0a99c8f24163ce13d39979100adb2a1a74c7519b7";
-  const sdk = ThirdwebSDK.fromPrivateKey(GOERLI_PRIVATE_KEY, activeChain = MoonbaseAlpha) ;
+  const PRIVATE_KEY = "a12e71ebe9a4bc009a99f6b0a99c8f24163ce13d39979100adb2a1a74c7519b7";
+  const sdk = ThirdwebSDK.fromPrivateKey(PRIVATE_KEY, activeChain = MoonbaseAlpha) ;
   // First, instantiate the SDK
   const storage = new ThirdwebStorage();
   const contract = await sdk.getContract("0xcFfB78dc49c7b096F046d77788014832dcbabF53");

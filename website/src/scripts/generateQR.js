@@ -4,12 +4,13 @@ const dataMonster =  require('./QRcodeMonster/data.json');
 const fs =  require('fs');
 const { ThirdwebSDK } =  require("@thirdweb-dev/sdk");
 const {} =  require('dotenv/config');
-
+const { MoonbaseAlpha } =  require("@thirdweb-dev/chains");
+var moment = require('moment');
 // createa a random string like password 
 const randomString = require("randomstring");
 const password = randomString.generate(8);
-const GOERLI_PRIVATE_KEY = process.env.GOERLI_PRIVATE_KEY;
-const sdk = ThirdwebSDK.fromPrivateKey(GOERLI_PRIVATE_KEY, "goerli");
+const PRIVATE_KEY = process.env.PRIVATE_KEY;
+const sdk = ThirdwebSDK.fromPrivateKey(PRIVATE_KEY, activeChain = MoonbaseAlpha);
 const storage = new ThirdwebStorage();
 
 
@@ -42,8 +43,9 @@ async function start() {
         console.log("https://gateway.ipfscdn.io/ipfs/"+uri.slice(7));
         var result = await contract.call("createRedeemableItem", password, uri, 1);
         console.log(result);
+        var time = moment().format('MM_DD_YYYY_h_mm_ss');
 
-        qr.toFile("./src/scripts/QRCodeResults/"+dataMonster[i].name+".png", password, function (err) {
+        qr.toFile("./src/scripts/QRCodeResults/"+dataMonster[i].name+"_"+time+".png", password, function (err) {
             if (err) throw err;
             console.log("saved");
         });
