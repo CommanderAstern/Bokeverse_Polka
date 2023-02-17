@@ -200,7 +200,7 @@ cd website
 ```
 2. Run `generate` script
 ```sh
-npm run createBokemon
+npm run generate
 ```
 3. QR code is generated in the `src\scripts\QRCodeResults` Folder
 4. Scan the QR code and obtain a Shiny Girason!!!!
