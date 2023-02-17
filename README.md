@@ -1,4 +1,4 @@
-﻿<a name="readme-top"></a>
+<a name="readme-top"></a>
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -71,15 +71,11 @@ The game is a decentralized 2D open-world RPG with turn-based battles. It is set
 
 [Youtube Demo](https://youtu.be/4CLOIO5XweI)
 
-[dev.to Article](https://dev.to/yukino2002/bokeverse-the-decentralised-2d-open-world-rpg-5b64)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Game Mechanics
 
 The game is made using Unity. As a game engine, Unity is able to provide many of the most important built-in features that make a game work. That means things like physics, animations, 3D/2D rendering, collision detection etc. We can create different game objects and add components to provide them with functionality, and make them interact with each other. These components can be in-built components provided by Unity, or custom scripts that we write ourselves in C#.
-
-A Detailed overview of the game can be found in the [dev.to article](https://google.com)
 
 ## Technologies Used
 
@@ -217,18 +213,17 @@ npm run createBokemon
 ### Demo Links
 The links to the working demos(in case of any error, kindly reload, the game will run smoothly) and articles of the project are as follows:
 
-* [Website](https://bokeverse.netlify.app/)
+* [Website](https://bokeversepolka.netlify.app)
 * [Game](https://gateway.ipfscdn.io/ipfs/QmXoX5jmrt5kDTR8VQvCWY9viCe9k84JahsCodqhFiXBai/)
 * [Video](https://youtu.be/4CLOIO5XweI)
-* [Dev.to Article](https://dev.to/yukino2002/bokeverse-the-decentralised-2d-open-world-rpg-5b64)
-* [Marketplace Thirdweb dashboard](https://thirdweb.com/goerli/0x61067EbAe343f6047271704d63B3f493c0810742)
-* [Game Contract dashboard](https://thirdweb.com/goerli/0xfbFaAB92b0444c36770190F22ea0C116B0Dea1a2)
+* [Marketplace Thirdweb dashboard](https://thirdweb.com/moonbase-alpha/0xb2D47631bA644430696726e195dD83d51D0f4FE2)
+* [Game Contract dashboard](https://thirdweb.com/moonbase-alpha/0xcFfB78dc49c7b096F046d77788014832dcbabF53)
 
 
 ### Prerequisites
 
 * [MetaMask](https://metamask.io/), [Coinbase](https://wallet.coinbase.com/) or any other wallet that supports the Ethereum network.
-* Some Goerli ETH to carry out transactions and pay for gas fees. You can grab some from a faucet [here](https://testnet.help/en/ethfaucet/goerli#log).
+* Some DEV tokens to carry out transactions and pay for gas fees. You can grab some from a faucet [here](https://apps.moonbeam.network/moonbase-alpha/faucet/).
 
 ### Playing the Game
 
@@ -323,13 +318,13 @@ Asim Jawahir - [LinkedIn](https://www.linkedin.com/in/asimjawahir/) - asimjawahi
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-[contributors-shield]: https://img.shields.io/github/contributors/Yukino2002/Bokeverse.svg?style=for-the-badge
-[contributors-url]: https://github.com/Yukino2002/Bokeverse/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Yukino2002/Bokeverse.svg?style=for-the-badge
-[forks-url]: https://github.com/Yukino2002/Bokeverse/network/members
-[stars-shield]: https://img.shields.io/github/stars/Yukino2002/Bokeverse.svg?style=for-the-badge
-[stars-url]: https://github.com/Yukino2002/Bokeverse/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Yukino2002/Bokeverse.svg?style=for-the-badge
-[issues-url]: https://github.com/Yukino2002/Bokeverse/issues
-[license-shield]: https://img.shields.io/github/license/Yukino2002/Bokeverse.svg?style=for-the-badge
-[license-url]: https://github.com/Yukino2002/Bokeverse/blob/main/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/CommanderAstern/Bokeverse_Polka.svg?style=for-the-badge
+[contributors-url]: https://github.com/CommanderAstern/Bokeverse_Polka/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/CommanderAstern/Bokeverse_Polka.svg?style=for-the-badge
+[forks-url]: https://github.com/CommanderAstern/Bokeverse_Polka/network/members
+[stars-shield]: https://img.shields.io/github/stars/CommanderAstern/Bokeverse_Polka.svg?style=for-the-badge
+[stars-url]: https://github.com/CommanderAstern/Bokeverse_Polka/stargazers
+[issues-shield]: https://img.shields.io/github/issues/CommanderAstern/Bokeverse_Polka.svg?style=for-the-badge
+[issues-url]: https://github.com/CommanderAstern/Bokeverse_Polka/issues
+[license-shield]: https://img.shields.io/github/license/CommanderAstern/Bokeverse_Polka.svg?style=for-the-badge
+[license-url]: https://github.com/CommanderAstern/Bokeverse_Polka/blob/main/LICENSE.txt
