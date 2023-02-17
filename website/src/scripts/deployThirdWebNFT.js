@@ -1,9 +1,9 @@
 const { ThirdwebStorage } =  require("@thirdweb-dev/storage");
 const dataMonster =  require('../../../contract/data.json');
 const fs =  require('fs');
-const { ThirdwebSDK } =  require("@thirdweb-dev/sdk");
+const { ThirdwebSDK, NATIVE_TOKEN_ADDRESS } =  require("@thirdweb-dev/sdk");
 const {} =  require('dotenv/config');
-const { getChainRPCs, MoonbaseAlpha } =  require("@thirdweb-dev/chains");
+const { MoonbaseAlpha } =  require("@thirdweb-dev/chains");
 
 
 start();

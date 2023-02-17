@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 const Home: NextPage = () => {
     const { contract } = useContract(
-        "0xb2D47631bA644430696726e195dD83d51D0f4FE2",
+        "0x61067EbAe343f6047271704d63B3f493c0810742",
         "marketplace"
     );
     const { data: nfts, isLoading } = useActiveListings(contract);
