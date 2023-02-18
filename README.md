@@ -65,6 +65,8 @@
 
 ## About The Project
 
+Although we started working on the project on January 18th, it's true that a significant amount of progress has been made after January 25th, as can be seen from the commit history. I hope we will be judged accordingly. Thank you.
+
 ![Town Square](website/public/TownSquare.jpg)
 
 The game is a decentralized 2D open-world RPG with turn-based battles. It is set in a fantasy world, allowing players to explore, fight monsters and possess NFT characters and collectibles registered to their wallet address. We have also included a trading marketplace for NFTs and a QR code generation system to easily access and purchase these NFTs.
@@ -77,6 +79,105 @@ The game is a decentralized 2D open-world RPG with turn-based battles. It is set
 
 The game is made using Unity. As a game engine, Unity is able to provide many of the most important built-in features that make a game work. That means things like physics, animations, 3D/2D rendering, collision detection etc. We can create different game objects and add components to provide them with functionality, and make them interact with each other. These components can be in-built components provided by Unity, or custom scripts that we write ourselves in C#.
 
+On start, the user must connect their wallet. Then, using the Thirdweb UnitySDK, we create an instance of our game contract within the game and fetch all the bokemons(NFTs) the player owns. The metadata is fetched from the contract and Scriptable objects are instantiated to use in the game as bokemons. Now, they can battle with these bokemons, and with the help of UnitySDK, we are able to update the experience level of the bokemons accordingly on the blockchain, and then update it in the game as well.
+
+The major game scenes/objects are as follows:
+
+- `Grid`:
+  This is the main map of our game. It is a grid of 2D array of tiles that the player can move around on. Different layers of tiles are used to create the background, obstacles, and other objects in the game.
+
+- `Player`:
+  This is the player character. It is a 2D sprite, with walking animations attatched using a blend tree. The player can move around the map using the arrow keys. It has the PlayerController and BokemonParty script attatched to it, which handles the behaviour of the player and other game objects.
+
+- `GameController`:
+  This is the main game controller. It is used to manage the game state, like free roam, battle, start menu etc. and other game objects. It has the GameController script attatched to it, which handles these tasks.
+
+- `BattleSystem`:
+  This is the battle controller. It is used to manage the battle state, like turn order, player turn, enemy turn etc, animations associated with the battle, and setting up the battle huds as well. It has the BattleSystem script attatched to it, which handles these tasks.
+
+- `MenuSystem`:
+  This is the start menu canvas. It asks the player to connect their wallet to the game, and then allows them to start the game.
+
+- `SDKManager`:
+  This is the Thirdweb UnitySDK manager. It creates an isntance of the sdk and is used to connect the game to the blockchain, and to interact with the smart contract.
+
+You can find all the scripts in the `/Bokemon/Assets/Scripts` directory. The primary game scripts are as follows:
+
+- `PlayerController`:
+  This script handles the movement of the player character. It also handles the collision detection with the obstacles, the movement of the camera, the detection of encounters with rogue bokemons in the grass etc.
+
+- `GameController`:
+  It handles the transition between the game states, free roam, start and end of battles etc. It has also has the functions for connecting the wallet, and handles the rendering of cameras.
+
+- `BokemonParty`:
+  This script handles the behaviour of the player's bokemons. It is responsible for fetching the metadata from the contract, writing transactions to update it, rewarding started bokemon, rendering of the bokemons in the party, and the switching of the bokemons in the party etc.
+
+- `BattleSystem`:
+  This script handles the behaviour of the entire battle system. It is responsible for setting up the battle, rendering the battle huds, handling the turn order, and the animations associated with the battle etc.
+
+- `BokemonBase`:
+  This script is the base class for all the bokemons. It defines the structure of the bokemon, and the functions that can be used to interact with it.
+
+- `Bokemon`:
+  This script is the class for the bokemon that the player owns. It inherits the BokemonBase class, and has information about the bokemon's experience level, elemental type, damage details and the moves it can use in battle.
+
+### Game Smart Contract
+
+The smart contract that the Bokeverse game runs on is a non-fungible token (NFT) contract that is built on the ERC1155Base contract by thirdweb which implements the ERC1155 NFT standard along with some additional functionality. This contract allows the creation of unique, collectible bokemons that can be owned by users and can have a unique experience level assigned to them.
+
+The contract includes the following functions:
+
+- `MintTo`: 
+  This function is responsible for minting new bokemons. It takes in parameters such as the recipient's address, the token ID, token URI, and the amount to be minted. This function also handles assigning a unique token ID to the bokemon if none is provided.
+
+- `Mint`: 
+  This function is a higher-level implementation of the MintTo function that takes in additional parameters such as the experience level of the bokemon being minted.
+
+- `GetBokemon`: 
+  This function returns the token URI and experience level of a bokemon specified by its ID.
+
+- `GetBokemonUri`: 
+  This function returns the token URI of a bokemon specified by its ID.
+
+- `GetBokemonPerUser`: 
+  This function returns an array of all the bokemons owned by a specific user.
+
+- `IncreaseExperience`: 
+  This function allows for the experience level of a bokemon to be increased.
+
+- `IncreaseExperienceBatch`: 
+  This function allows for the experience level of multiple bokemons to be increased in bulk.
+
+- `Redeem`: 
+  This function allows users to redeem a bokemon by providing a redeem code. If the code is correct, the user will receive the specified bokemon.
+
+Overall, the Bokeverse contract allows for the creation and management of unique, collectible bokemons that can be owned by users and can have a unique experience level assigned to them. This contract provides a number of functions that allow users to interact with their bokemons and manage their experience levels.
+
+### Marketplace
+
+The NFT marketplace for Bokeverse was built on the marketplace contract by Thirdweb. The frontend of the marketplace was developed using Thirdweb and Tailwind. The marketplace provides a platform for users to view and purchase Bokemons that are listed for sale by other users.
+
+The marketplace includes the following functions:
+
+- View Listings: 
+  Users can view all the Bokemons that are currently listed for sale on the marketplace.
+
+- Buy Bokemon: 
+  Users can purchase a Bokemon by selecting the desired listing and submitting the transaction to the smart contract.
+
+- List Bokemon (Workaround using Thirdweb Dashboard): 
+  Users can list a Bokemon for sale by interacting with the smart contract via the Thirdweb dashboard. They can specify the desired price and other relevant information for the listing.
+
+The NFT marketplace for Bokeverse provides a user-friendly platform for buying and selling Bokemons. The integration with the smart contract allows for secure and transparent transactions on the blockchain. 
+
+### QR Redeeming
+
+The QR Redeeming feature in Bokeverse allows users to redeem a Bokemon by uploading or scanning a QR code using their camera. This feature is part of the plan to make physical trading cards for collecting Bokemons. The trading cards will include a QR code that can be scanned to redeem the corresponding Bokemon.
+
+The QR Redeeming feature provides a convenient way for users to collect Bokemons and adds an additional layer of engagement to the Bokeverse game. By allowing for physical trading cards, the QR Redeeming feature combines the traditional collectible experience with the benefits of blockchain technology. 
+
+Users can generate a new QR code at website using `npm run generate` . This code can be printed on a physical trading card or displayed on a screen for scanning.
+
 ## Technologies Used
 
 * [Unity Engine](https://unity.com/)
@@ -84,25 +185,9 @@ The game is made using Unity. As a game engine, Unity is able to provide many of
   * Utilized [DoTween](https://assetstore.unity.com/packages/tools/animation/dotween-hotween-v2-27676) animation package for Unity.
 
 * [Thirdweb](https://thirdweb.com/)
-  * We used the Thirdweb web3 development framework to integrate web3 into our game and website.
-  * Solutions used:
-    * GamingKit:
-      * Utilised Thirdweb UnitySDK to connect players' wallets, interact with the smart contracts within the game.
-      * Additionally, we used the Thirdweb dashboard to manage and interact with the smart contracts deployed in the game and the marketplace.
-    * ContractKit: 
-        * With the Thirdweb ContractKit, we wrote the contracts for our game and marketplace.
-        * The [Thirdweb ERC1155 base](https://thirdweb.com/goerli/0xfbFaAB92b0444c36770190F22ea0C116B0Dea1a2/) contracts were utilized for creating NFTs and other related purposes.
-        * THe [Thirdweb marketplace contracts](https://thirdweb.com/goerli/0x61067EbAe343f6047271704d63B3f493c0810742/) were used to create the marketplace for our NFTs.
-    * UIKit:
-      * We used the Thirdweb UIKit components to create the website and marketplace more efficiently. Some of the components used are: 
-        * Connect Wallet Button: The Connect Wallet Button connects players' wallets (MetaMask, Coinbase Wallet, etc.) within the website.
-        * Web3Button: The Web3Button allows players to interact with the smart contracts on the blockchain.
-        * NFT Metadata Renderer: The NFT Metadata Renderer displays the metadata of NFTs and lists them on the marketplace.    
-    * ReactSDK: We utilised the Thirdweb ReactSDK for the development of our website, QR code redemption and marketplace. Some of the functions used are:
-        * Connection of players' digital wallets, including MetaMask and Coinbase Wallet, directly within the website.
-        * Interact and call on-chain functions on our website.
-    * Thirdweb Storage:
-      * We have used the Thirdweb Storage to store our Bokemon(NFT) metadata and image to IPFS which are implemented in the QR code and NFT generation scripts.
+  * The Thirdweb web3 development framework was used to integrate web3 into the game and website.
+  * Various Thirdweb solutions were utilized, such as GamingKit, ContractKit, UIKit, ReactSDK, and Thirdweb Storage.
+  * These solutions enabled the connection of players' wallets, interaction with smart contracts on the blockchain, creation of NFTs and a marketplace, efficient website development, and storage of NFT metadata and images.
 
 * [Scenario.gg](https://www.scenario.gg/)
   * We made use of AI-generated assets for our game and website. These assets include:
@@ -113,8 +198,6 @@ The game is made using Unity. As a game engine, Unity is able to provide many of
     * Logo and website images:
       * <img src="website/public/logo2.png" width="250" /> <img src="website/public/PlayerLarge.png" width="250" />
 
-* [Coinbase](https://wallet.coinbase.com/)
-  * We have integrated Coinbase Wallet connect feature for the players.
 * [Next.js](https://nextjs.org/)
   * We used the powerful Next.js framework to create our website.
 
